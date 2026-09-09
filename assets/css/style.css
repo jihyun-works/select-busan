@@ -2739,3 +2739,576 @@ footer {
     transition: none
   }
 }
+/* =========================================================
+   SELECT BUSAN LOADING SCREEN
+========================================================= */
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+
+  overflow: hidden;
+
+  background:
+    url("../img/loading.png")
+    center / cover
+    no-repeat;
+
+  opacity: 1;
+  visibility: visible;
+
+  animation: sb-loading-out .3s ease 1.15s forwards;
+}
+
+
+/* =========================================================
+   LOADING CONTENT
+========================================================= */
+
+.loading-inner {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding-bottom: 2vh;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.loading-logo {
+  width: clamp(300px, 27vw, 500px);
+  height: auto;
+
+  margin-bottom: clamp(18px, 2.2vh, 30px);
+
+  opacity: 0;
+
+  animation:
+    sb-logo-in .35s ease-out .05s forwards;
+}
+
+
+/* =========================================================
+   CHARACTERS
+========================================================= */
+
+.loading-characters {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  width: min(1200px, 82vw);
+
+  gap: clamp(0px, .6vw, 14px);
+}
+
+
+/* character wrapper */
+
+.loading-character {
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  flex: 1;
+
+  height: clamp(230px, 17vw, 330px);
+}
+
+
+/* character image */
+
+.loading-character > img {
+  position: relative;
+  z-index: 2;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  transform-origin: center bottom;
+
+  animation:
+    sb-character-bounce .92s
+    cubic-bezier(.45, 0, .25, 1)
+    infinite;
+}
+
+
+/* =========================================================
+   CHARACTER SIZE
+========================================================= */
+
+/* WAY */
+
+.loading-way > img {
+  width: clamp(190px, 14vw, 275px);
+
+  animation-delay: 0s;
+}
+
+
+/* MOMI */
+
+.loading-momi > img {
+  width: clamp(190px, 14vw, 270px);
+
+  animation-delay: -.16s;
+}
+
+
+/* TORI
+   원본 PNG 안의 투명 여백이 크기 때문에
+   이미지 박스를 조금 더 크게 지정
+*/
+
+.loading-tori > img {
+  width: clamp(245px, 18vw, 355px);
+
+  animation-delay: -.31s;
+}
+
+
+/* LUMI */
+
+.loading-lumi > img {
+  width: clamp(185px, 13.8vw, 265px);
+
+  animation-delay: -.22s;
+}
+
+
+/* =========================================================
+   SHADOW
+========================================================= */
+
+.loading-shadow {
+  position: absolute;
+
+  z-index: 1;
+
+  left: 50%;
+  bottom: 0;
+
+  width: clamp(70px, 6vw, 110px);
+  height: clamp(10px, 1vw, 18px);
+
+  border-radius: 50%;
+
+  background: rgba(0, 111, 232, .12);
+
+  transform: translateX(-50%);
+
+  animation:
+    sb-shadow-bounce .92s
+    cubic-bezier(.45, 0, .25, 1)
+    infinite;
+}
+
+
+.loading-way .loading-shadow {
+  animation-delay: 0s;
+}
+
+
+.loading-momi .loading-shadow {
+  animation-delay: -.16s;
+}
+
+
+.loading-tori .loading-shadow {
+  animation-delay: -.31s;
+}
+
+
+.loading-lumi .loading-shadow {
+  animation-delay: -.22s;
+}
+
+
+/* =========================================================
+   LOADING TEXT
+========================================================= */
+
+.loading-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 13px;
+
+  margin-top: clamp(12px, 1.5vh, 22px);
+}
+
+
+.loading-status p {
+  margin: 0;
+
+  color: var(--blue);
+
+  font-family:
+    "Plus Jakarta Sans",
+    sans-serif;
+
+  font-size: clamp(15px, 1.3vw, 22px);
+
+  font-weight: 600;
+
+  letter-spacing: .16em;
+}
+
+
+/* =========================================================
+   DOTS
+========================================================= */
+
+.loading-dots {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.loading-dots span {
+  display: block;
+
+  width: 14px;
+  height: 14px;
+
+  border-radius: 50%;
+
+  background: var(--blue);
+
+  opacity: .25;
+
+  animation:
+    sb-loading-dot .75s
+    ease-in-out
+    infinite;
+}
+
+
+.loading-dots span:nth-child(2) {
+  animation-delay: .13s;
+}
+
+
+.loading-dots span:nth-child(3) {
+  animation-delay: .26s;
+}
+
+
+/* =========================================================
+   CHARACTER BOUNCE
+========================================================= */
+
+@keyframes sb-character-bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  35% {
+    transform: translateY(-24px);
+  }
+
+  48% {
+    transform: translateY(-24px);
+  }
+
+  70% {
+    transform: translateY(0);
+  }
+
+  82% {
+    transform: translateY(-5px);
+  }
+
+  92% {
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =========================================================
+   SHADOW BOUNCE
+========================================================= */
+
+@keyframes sb-shadow-bounce {
+
+  0%,
+  100% {
+    opacity: .9;
+
+    transform:
+      translateX(-50%)
+      scaleX(1);
+  }
+
+  35%,
+  48% {
+    opacity: .35;
+
+    transform:
+      translateX(-50%)
+      scaleX(.62);
+  }
+
+  70% {
+    opacity: .9;
+
+    transform:
+      translateX(-50%)
+      scaleX(1);
+  }
+
+  82% {
+    opacity: .65;
+
+    transform:
+      translateX(-50%)
+      scaleX(.82);
+  }
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+@keyframes sb-logo-in {
+
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =========================================================
+   DOT
+========================================================= */
+
+@keyframes sb-loading-dot {
+
+  0%,
+  100% {
+    opacity: .2;
+    transform: scale(.78);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+
+/* =========================================================
+   LOADING SCREEN OUT
+========================================================= */
+
+@keyframes sb-loading-out {
+
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  99% {
+    opacity: 0;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .loading-logo {
+    width: min(330px, 45vw);
+  }
+
+
+  .loading-characters {
+    width: 92vw;
+  }
+
+
+  .loading-character {
+    height: 250px;
+  }
+
+
+  .loading-way > img {
+    width: 215px;
+  }
+
+
+  .loading-momi > img {
+    width: 210px;
+  }
+
+
+  .loading-tori > img {
+    width: 280px;
+  }
+
+
+  .loading-lumi > img {
+    width: 205px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .loading-screen {
+    background-size: cover;
+    background-position: center;
+  }
+
+
+  .loading-inner {
+    justify-content: center;
+
+    padding: 25px 18px;
+  }
+
+
+  .loading-logo {
+    width: min(245px, 64vw);
+
+    margin-bottom: 18px;
+  }
+
+
+  .loading-characters {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    width: min(340px, 90vw);
+
+    gap: 2px 6px;
+  }
+
+
+  .loading-character {
+    width: 100%;
+    height: 170px;
+  }
+
+
+  .loading-way > img {
+    width: 150px;
+  }
+
+
+  .loading-momi > img {
+    width: 145px;
+  }
+
+
+  .loading-tori > img {
+    width: 195px;
+  }
+
+
+  .loading-lumi > img {
+    width: 145px;
+  }
+
+
+  .loading-shadow {
+    width: 60px;
+    height: 10px;
+  }
+
+
+  .loading-status {
+    margin-top: 17px;
+
+    gap: 10px;
+  }
+
+
+  .loading-status p {
+    font-size: 13px;
+
+    letter-spacing: .12em;
+  }
+
+
+  .loading-dots span {
+    width: 10px;
+    height: 10px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .loading-logo,
+  .loading-character > img,
+  .loading-shadow,
+  .loading-dots span {
+    animation: none;
+  }
+
+
+  .loading-screen {
+    animation:
+      sb-loading-out .2s linear .4s forwards;
+  }
+
+}
